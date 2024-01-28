@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{/members/login}" sec:authorize="isAnonymous()">login</a>
+<a th:href="@{/members/signup}" sec:authorize="isAnonymous()">signup</a>
+<a th:href="@{/mypage}" sec:authorize="hasRole('ROLE_MEMBER')">mypage</a>
+<a th:href="@{/admin}" sec:authorize="hasRole('ROLE_ADMIN')">admin</a>
+<a th:href="@{/members/logout}" sec:authorize="isAuthenticated()">logout</a>
+<form action="#" th:action="@{/members/logout}" method="post" sec:authorize="isAuthenticated()">
+    <button type="submit">logout</button>
+</form>
+</body>
+</html>
